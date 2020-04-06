@@ -14,7 +14,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@mvt/core":["src/app/core/public_api.ts"],
+      "@mvt/shared":["src/app/shared/public_api.ts"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
