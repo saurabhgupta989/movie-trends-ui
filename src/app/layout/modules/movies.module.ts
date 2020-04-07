@@ -10,9 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { MovieRoutingModule } from './movies.routing.module';
 import { MovieInfoListComponent } from './movies/components/movie-info-list/movie-info-list.component';
 import { MoviesContainerComponent } from './movies/components/movies-container/movies-container.component';
+import { MovieInfoComponent } from './movies/components/movie-info/movie-info.component';
 
 @NgModule({
-    declarations:[MovieInfoListComponent, MoviesContainerComponent],
+    declarations:[MovieInfoListComponent, MoviesContainerComponent, MovieInfoComponent],
     imports:[
         MovieRoutingModule,
         FormsModule,

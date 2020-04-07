@@ -1,0 +1,10 @@
+img{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.float-left{
+float: left;
+width: 200px;
+}

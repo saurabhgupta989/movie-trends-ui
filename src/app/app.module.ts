@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from '@mvt/core';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
+import {ListboxModule} from 'primeng/listbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { LayoutModule } from './layout/layout.module';
     AppRoutingModule,
     CoreModule,
     LayoutModule,
+    ListboxModule,
     ButtonModule,
     SidebarModule
   ],

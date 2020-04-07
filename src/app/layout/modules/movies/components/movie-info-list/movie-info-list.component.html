@@ -1,11 +1,11 @@
-<p-dataView #dv [value]="movies" [paginator]="true" [rows]="2" paginatorPosition="both" filterBy="brand"
+<p-dataView #dv [value]="movies" [paginator]="true" [rows]="2" paginatorPosition="both" filterBy="title"
   [sortField]="sortField" [sortOrder]="sortOrder">
   <p-header>
     <div class="ui-helper-clearfix">
       <div class="ui-g">
         <div class="ui-g-12 ui-md-4">
-          <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
-            (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+          <p-dropdown [options]="sortOptions" placeholder="Sort By" (onChange)="onSortChange($event)"
+            [style]="{'min-width':'140px'}"></p-dropdown>
         </div>
         <div class="ui-g-6 ui-md-4 filter-container">
           <div style="position:relative">
@@ -18,29 +18,26 @@
       </div>
     </div>
   </p-header>
-  <ng-template let-car pTemplate="listItem">
+  <ng-template let-movie pTemplate="listItem">
     <div class="ui-g-12">
-      <div class="car-details">
+      <div class="movie-details">
         <div>
-          <img src="{{car.Poster}}">
-          <div class="ui-g">
-            <div class="ui-g-12">Name: <b>{{car.title}}</b></div>
-            <div class="ui-g-12">Year: <b>{{car.year}}</b></div>
-            <div class="ui-g-12">Released: <b>{{car.Released}}</b></div>
+          <img src="{{movie.Poster}}" class="float-left" (click)="navigateToMovieinfo($event, movie)">
+          <div class="ui-g float-left">
+            <div class="ui-g-12">Name: <b>{{movie.title}}</b></div>
+            <div class="ui-g-12">Year: <b>{{movie.year}}</b></div>
+            <div class="ui-g-12">Released: <b>{{movie.Released}}</b></div>
           </div>
         </div>
-        <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)"></button>
       </div>
     </div>
   </ng-template>
-  <ng-template let-car pTemplate="gridItem">
+  <ng-template let-movie pTemplate="gridItem">
     <div style="padding:.5em" class="ui-g-12 ui-md-3">
-      <p-panel [header]="car.vin" [style]="{'text-align':'center'}">
-        <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60">
-        <div class="car-detail">{{car.year}} - {{car.color}}</div>
+      <p-panel [header]="movie.title" [style]="{'text-align':'center'}">
+        <img src="{{movie.Poster}}" width="60" (click)="navigateToMovieinfo($event, movie)">
+        <div class="movie-detail"> {{movie.Released}}</div>
         <hr class="ui-widget-content" style="border-top:0">
-        <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)"
-          style="margin-top:0"></button>
       </p-panel>
     </div>
   </ng-template>

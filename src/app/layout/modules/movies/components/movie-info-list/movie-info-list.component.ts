@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mvt-movie-info-list',
@@ -8,13 +9,7 @@ import { SelectItem } from 'primeng/api/selectitem';
 })
 export class MovieInfoListComponent implements OnInit {
 
-  selectedCar: any;
-
-  displayDialog: boolean;
-
   sortOptions: SelectItem[];
-
-  sortKey: string;
 
   sortField: string;
 
@@ -22,24 +17,23 @@ export class MovieInfoListComponent implements OnInit {
 
   @Input('movies') movies: any[];
 
-  constructor() {
+  constructor(private readonly router: Router) {
   }
 
   ngOnInit(): void {
     this.sortOptions = [
-      { label: 'Newest First', value: '!year' },
-      { label: 'Oldest First', value: 'year' },
-      { label: 'Brand', value: 'brand' }
+      { label: 'Newest First', value: '!Released' },
+      { label: 'Oldest First', value: 'Released' },
+      { label: 'Name', value: 'title' }
     ];
   }
 
-  selectCar(event: Event, car: any) {
-    this.selectedCar = car;
-    this.displayDialog = true;
+  navigateToMovieinfo(event: Event, movie: any): void {
+    this.router.navigate(['movies', 'view', movie.id]);
     event.preventDefault();
   }
 
-  onSortChange(event) {
+  onSortChange(event): void {
     let value = event.value;
 
     if (value.indexOf('!') === 0) {
@@ -50,10 +44,6 @@ export class MovieInfoListComponent implements OnInit {
       this.sortOrder = 1;
       this.sortField = value;
     }
-  }
-
-  onDialogHide() {
-    this.selectedCar = null;
   }
 
 }
