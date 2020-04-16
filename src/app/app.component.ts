@@ -18,22 +18,21 @@ export class AppComponent implements OnInit {
       { name: 'Movies', code: 'MOVIE' },
       { name: 'Analytics', code: 'ANALYTICS' }
     ];
+    this.fetchLoggedInUserInfo();
   }
 
   public signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res => {
       console.log(res);
-      console.log(JSON.stringify(res));
-      this.user={};
-      this.user.firstName=res.firstName;
-      this.user.email=res.email;
-      this.user.photoUrl=res.photoUrl;
+      localStorage.setItem('MT_TOKEN', JSON.stringify(res));
+      this.user = res;
     });
   }
 
   public signOut(): void {
     this.authService.signOut();
-    this.user=null;
+    localStorage.setItem('MT_TOKEN', null);
+    this.user = null;
   }
 
   public navigateToModule(event: any): void {
@@ -42,5 +41,10 @@ export class AppComponent implements OnInit {
     } else if (event.value.code === 'MOVIE') {
       this.router.navigate(['movies']);
     }
+  }
+
+  public fetchLoggedInUserInfo(): void {
+    const authToken = localStorage.getItem('MT_TOKEN');
+    this.user = JSON.parse(authToken);
   }
 }
