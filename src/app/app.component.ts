@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '@mvt/core';
 import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 
 @Component({
@@ -11,7 +12,8 @@ export class AppComponent implements OnInit {
   display: boolean;
   leftNavOptions: any[];
   user: any;
-  constructor(private readonly router: Router, private readonly authService: AuthService) { }
+  constructor(private readonly router: Router, private readonly authService: AuthService,
+    private readonly userService: UserService) { }
 
   ngOnInit(): void {
     this.leftNavOptions = [
@@ -23,16 +25,15 @@ export class AppComponent implements OnInit {
 
   public signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res => {
-      console.log(res);
-      localStorage.setItem('MT_TOKEN', JSON.stringify(res));
-      this.user = res;
+      this.userService.setLoggedInUser(res);
+      this.user = this.userService.getLoggedInUser();
     });
   }
 
   public signOut(): void {
     this.authService.signOut();
-    localStorage.setItem('MT_TOKEN', null);
-    this.user = null;
+    this.userService.setLoggedInUser(null);
+    this.user = this.userService.getLoggedInUser();
   }
 
   public navigateToModule(event: any): void {
@@ -44,7 +45,6 @@ export class AppComponent implements OnInit {
   }
 
   public fetchLoggedInUserInfo(): void {
-    const authToken = localStorage.getItem('MT_TOKEN');
-    this.user = JSON.parse(authToken);
+    this.user = this.userService.getLoggedInUser();
   }
 }
