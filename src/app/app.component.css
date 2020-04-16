@@ -48,3 +48,30 @@
   .listbox{
     margin-top: 50px;
   }
+
+  .user svg{
+    margin-left: 30px;
+  }
+
+  .svg-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: white;
+  }
+  
+  .svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+  }
+
+.signout{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

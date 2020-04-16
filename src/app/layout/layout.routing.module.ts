@@ -10,7 +10,11 @@ const routes: Routes = [
     children:[
       {
         path:'movies',
-        loadChildren:()=>import('./modules/movies.module').then(m=>m.MoviesModule)
+        loadChildren:()=>import('./modules/movies/movies.module').then(m=>m.MoviesModule)
+      },
+      {
+        path:'analytics',
+        loadChildren:()=>import('./modules/analytics/analytics.module').then(m=>m.AnalyticsModule)
       },
       {
         path:'',

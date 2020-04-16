@@ -6,15 +6,16 @@ import { DataViewModule } from 'primeng/dataview';
 import { TreeModule } from 'primeng/tree';
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
+import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { MovieRoutingModule } from './movies.routing.module';
-import { MovieInfoListComponent } from './movies/components/movie-info-list/movie-info-list.component';
-import { MoviesContainerComponent } from './movies/components/movies-container/movies-container.component';
-import { MovieInfoComponent } from './movies/components/movie-info/movie-info.component';
+import { MovieInfoListComponent } from './components/movie-info-list/movie-info-list.component';
+import { MoviesContainerComponent } from './components/movies-container/movies-container.component';
+import { MovieInfoComponent } from './components/movie-info/movie-info.component';
 
 @NgModule({
-    declarations:[MovieInfoListComponent, MoviesContainerComponent, MovieInfoComponent],
-    imports:[
+    declarations: [MovieInfoListComponent, MoviesContainerComponent, MovieInfoComponent],
+    imports: [
         MovieRoutingModule,
         FormsModule,
         CardModule,
@@ -22,6 +23,7 @@ import { MovieInfoComponent } from './movies/components/movie-info/movie-info.co
         PanelModule,
         DataViewModule,
         TreeModule,
+        InputTextModule,
         ButtonModule,
         SidebarModule
     ]

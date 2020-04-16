@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieinfoService } from '@mvt/core';
-import { getMovies } from 'src/app/core/fixture/movies';
+import { getInTheatreMovies, getComingSoonMovies } from 'src/app/core/fixture/movies';
 
 @Component({
   selector: 'app-movies-container',
@@ -20,7 +20,12 @@ export class MoviesContainerComponent implements OnInit {
       this.inTheatreMovies = res;
       this.movieinfoService.fetchAllMovieinfo('?comingSoon=true').subscribe(res => {
         this.comingSoonMovies = res;
+      }, error => {
+        this.comingSoonMovies = getComingSoonMovies();
       });
+    }, error => {
+      this.inTheatreMovies = getInTheatreMovies();
+      this.comingSoonMovies = getComingSoonMovies();
     });
   }
 
