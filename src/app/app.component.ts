@@ -25,8 +25,14 @@ export class AppComponent implements OnInit {
 
   public signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res => {
-      this.userService.setLoggedInUser(res);
-      this.user = this.userService.getLoggedInUser();
+      res.id = null;
+      this.userService.saveUser(res).subscribe(response => {
+        this.userService.setLoggedInUser(res);
+        this.user = this.userService.getLoggedInUser();
+      }, error => {
+        this.userService.setLoggedInUser(res);
+        this.user = this.userService.getLoggedInUser();
+      })
     });
   }
 

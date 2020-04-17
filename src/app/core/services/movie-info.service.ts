@@ -11,7 +11,7 @@ const URL = 'http://127.0.0.1:5000'
 )
 export class MovieinfoService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private readonly http: HttpClient) { }
 
     fetchAllMovieinfo(queryParams = ''): Observable<any> {
         const apiUrl = URL + '/movie-info' + queryParams;
