@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const URL = 'https://movie-trends-be.herokuapp.com/';
+const URL = 'https://movie-trends-be.herokuapp.com';
 @Injectable(
     {
         providedIn: 'root'
