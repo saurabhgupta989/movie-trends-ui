@@ -30,8 +30,7 @@ export class AppComponent implements OnInit {
         this.userService.setLoggedInUser(res);
         this.user = this.userService.getLoggedInUser();
       }, error => {
-        this.userService.setLoggedInUser(res);
-        this.user = this.userService.getLoggedInUser();
+        console.log('error', error);
       })
     });
   }

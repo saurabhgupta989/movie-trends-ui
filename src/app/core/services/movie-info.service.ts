@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-const URL = 'http://127.0.0.1:5000'
+const URL = 'https://movie-trends-be.herokuapp.com/'
 @Injectable(
     {
         providedIn: 'root'

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+const URL = 'https://movie-trends-be.herokuapp.com/';
 @Injectable(
     {
         providedIn: 'root'
@@ -22,7 +23,8 @@ export class UserService {
     }
 
     public saveUser(user: any): Observable<any> {
-        return this.http.post('http://127.0.0.1:5000/user', user);
+        const apiURL=URL+'/user'
+        return this.http.post(apiURL, user);
     }
 
 }

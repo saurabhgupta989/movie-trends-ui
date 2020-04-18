@@ -21,11 +21,10 @@ export class MoviesContainerComponent implements OnInit {
       this.movieinfoService.fetchAllMovieinfo('?comingSoon=true').subscribe(res => {
         this.comingSoonMovies = res;
       }, error => {
-        this.comingSoonMovies = getComingSoonMovies();
+        console.log('error', error);
       });
     }, error => {
-      this.inTheatreMovies = getInTheatreMovies();
-      this.comingSoonMovies = getComingSoonMovies();
+      console.log('error', error);
     });
   }
 
