@@ -1,1 +1,80 @@
-<p>movie-info works!</p>
+<p-card header="{{movieInfo?.title}}" subheader="{{movieInfo?.Released}}" [style]="{width: '960px'}"
+    styleClass="ui-card-shadow">
+    <p-header>
+        <img src="Card" src="{{movieInfo?.Poster}}" width="900px" height="400px">
+    </p-header>
+    <div>{{movieInfo?.Plot}}</div>
+    <div class="p-grid group">
+        <div class="p-col">
+            <div class="p-grid">
+                <div class="p-col">
+                    Actors
+                </div>
+                <div class="p-col">
+                    {{getActorsOrWritersOrDirectorsName(movieInfo?._Actor)}}
+                </div>
+            </div>
+        </div>
+        <div class="p-col">
+            <div class="p-grid">
+                <div class="p-col">
+                </div>
+                <div class="p-col">
+                    <p-rating [ngModel]="movieInfo?.rating" readonly="true" [cancel]="false" disabled="true"></p-rating>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid group">
+        <div class="p-col">
+            <div class="p-grid">
+                <div class="p-col">
+                    Writers
+                </div>
+                <div class="p-col">
+                    {{getActorsOrWritersOrDirectorsName(movieInfo?._Writer) }}
+                </div>
+            </div>
+        </div>
+        <div class="p-col">
+        </div>
+    </div>
+    <div class="p-grid group">
+        <div class="p-col">
+            <div class="p-grid">
+                <div class="p-col">
+                    Director
+                </div>
+                <div class="p-col">
+                    {{getActorsOrWritersOrDirectorsName(movieInfo?._Director)}}
+                </div>
+            </div>
+        </div>
+        <div class="p-col">
+        </div>
+    </div>
+    <div class="p-grid group">
+        <div class="p-col">
+            <div class="p-grid">
+                <div class="p-col">
+                    Genre
+                </div>
+                <div class="p-col">
+                    {{getGenre(movieInfo?._Genre)}}
+                </div>
+            </div>
+        </div>
+        <div class="p-col">
+        </div>
+    </div>
+    <p-footer>
+        <div class="p-grid">
+            <div class="p-col-3">
+                <span>Submit Review</span>
+            </div>
+            <div class="p-col-9">
+                <p-rating [ngModel]="rating"></p-rating>
+            </div>
+        </div>
+    </p-footer>
+</p-card>

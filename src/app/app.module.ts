@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
+import { CommonModule } from '@angular/common';
  
 
 let config = new AuthServiceConfig([
@@ -30,6 +31,7 @@ export function provideConfig() {
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SocialLoginModule,

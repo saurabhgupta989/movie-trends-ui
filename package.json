@@ -23,6 +23,7 @@
     "angularx-social-login": "^2.2.1",
     "express": "^4.17.1",
     "path": "^0.12.7",
+    "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.5",
     "rxjs": "~6.5.4",
