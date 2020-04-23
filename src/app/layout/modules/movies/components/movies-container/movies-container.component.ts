@@ -15,16 +15,20 @@ export class MoviesContainerComponent implements OnInit {
 
   inTheatreMovies: any[];
   comingSoonMovies: any[];
+  allmovies: any[];
   ngOnInit(): void {
     this.movieinfoService.fetchAllMovieinfo('?inTheatre=true').subscribe(res => {
       this.inTheatreMovies = res;
-      this.movieinfoService.fetchAllMovieinfo('?comingSoon=true').subscribe(res => {
-        this.comingSoonMovies = res;
-      }, error => {
-        console.log('error', error);
-      });
     }, error => {
       console.log('error', error);
+    });
+    this.movieinfoService.fetchAllMovieinfo('?comingSoon=true').subscribe(res => {
+      this.comingSoonMovies = res;
+    }, error => {
+      console.log('error', error);
+    });
+    this.movieinfoService.fetchAllMovieinfo().subscribe(res => {
+      this.allmovies = res;
     });
   }
 
